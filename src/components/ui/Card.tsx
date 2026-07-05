@@ -1,8 +1,10 @@
+'use client'
+
 import React from 'react'
-import { motion } from 'framer-motion'
+import { motion, HTMLMotionProps } from 'framer-motion'
 import { cn } from '@/utils/formatters'
 
-interface CardProps {
+interface CardProps extends Omit<HTMLMotionProps<"div">, "ref"> {
   children: React.ReactNode
   className?: string
   hover?: boolean
@@ -10,7 +12,14 @@ interface CardProps {
   delay?: number
 }
 
-export function Card({ children, className, hover = true, glow = false, delay = 0 }: CardProps) {
+export function Card({ 
+  children, 
+  className, 
+  hover = true, 
+  glow = false, 
+  delay = 0,
+  ...props 
+}: CardProps) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -22,6 +31,7 @@ export function Card({ children, className, hover = true, glow = false, delay = 
         glow && 'hover:shadow-2xl hover:shadow-mostarda-500/20',
         className
       )}
+      {...props}
     >
       {children}
     </motion.div>

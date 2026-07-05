@@ -17,7 +17,8 @@ interface CartContextType {
   totalPrice: number
 }
 
-const CartContext = createContext<CartContextType | undefined>(undefined)
+// Exportando o contexto para ser usado no hook
+export const CartContext = createContext<CartContextType | undefined>(undefined)
 
 export function CartProvider({ children }: { children: React.ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([])
