@@ -1,11 +1,10 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/Card'
-import { Badge } from '@/components/ui/Badge'
 import { Button } from '@/components/ui/Button'
-import { Clock, Percent, ArrowRight, Tag, Calendar } from 'lucide-react'
+import { ArrowRight, Tag, Calendar } from 'lucide-react'
+import { ScrollReveal } from '@/components/animations/ScrollReveal'
 
 export default function Promocoes() {
   const promocoes = [
@@ -47,12 +46,7 @@ export default function Promocoes() {
   return (
     <section className="py-20 bg-dark-400">
       <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <ScrollReveal direction="up" className="text-center mb-12">
           <div className="inline-flex items-center gap-2 bg-mostarda-500/10 px-4 py-2 rounded-full mb-4">
             <Tag className="w-4 h-4 text-mostarda-500" />
             <span className="text-mostarda-500 font-body font-bold text-sm uppercase tracking-wider">Ofertas Especiais</span>
@@ -63,21 +57,17 @@ export default function Promocoes() {
           <p className="text-white/60 max-w-2xl mx-auto">
             Aproveite nossas ofertas exclusivas e saboreie o melhor custo-benefício da cidade
           </p>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {promocoes.map((promocao, index) => (
-            <motion.div
+            <ScrollReveal
               key={promocao.id}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
+              direction="up"
+              delay={index * 0.1}
             >
               <Card hover glow className="overflow-hidden group">
-                {/* Card com gradiente de fundo */}
                 <div className={`relative bg-gradient-to-br ${promocao.cor} p-6`}>
-                  {/* Badge de desconto */}
                   <div className="flex items-start justify-between">
                     <div>
                       <span className={`inline-flex items-center px-3 py-1 rounded-full text-sm font-bold font-body text-white ${promocao.corBadge}`}>
@@ -90,7 +80,6 @@ export default function Promocoes() {
                     </div>
                   </div>
 
-                  {/* Conteúdo */}
                   <div className="mt-4">
                     <h3 className="font-display text-2xl mb-2 text-white">
                       {promocao.titulo}
@@ -100,7 +89,6 @@ export default function Promocoes() {
                     </p>
                   </div>
 
-                  {/* Preços */}
                   <div className="mt-4 flex items-end gap-3">
                     <span className="text-white/40 text-sm line-through">
                       {promocao.precoOriginal}
@@ -110,7 +98,6 @@ export default function Promocoes() {
                     </span>
                   </div>
 
-                  {/* Botão */}
                   <Button 
                     className="w-full mt-4 group-hover:scale-[1.02] transition-transform"
                     glow
@@ -120,21 +107,15 @@ export default function Promocoes() {
                   </Button>
                 </div>
               </Card>
-            </motion.div>
+            </ScrollReveal>
           ))}
         </div>
 
-        {/* Rodapé da seção */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
+        <ScrollReveal direction="up" delay={0.3} className="text-center mt-12">
           <p className="text-white/40 text-sm">
             *Promoções válidas enquanto durarem os estoques. Consulte condições.
           </p>
-        </motion.div>
+        </ScrollReveal>
       </div>
     </section>
   )

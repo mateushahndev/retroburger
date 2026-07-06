@@ -1,9 +1,9 @@
 'use client'
 
 import React from 'react'
-import { motion } from 'framer-motion'
 import { Card } from '@/components/ui/Card'
 import { Star } from 'lucide-react'
+import { ScrollReveal } from '@/components/animations/ScrollReveal'
 
 export default function Depoimentos() {
   const depoimentos = [
@@ -36,51 +36,48 @@ export default function Depoimentos() {
   return (
     <section className="py-20 bg-gradient-to-b from-dark-300 to-dark-400">
       <div className="container-custom">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+        <ScrollReveal direction="up" className="text-center mb-12">
           <h2 className="font-display text-4xl sm:text-5xl mb-4">
             O que nossos <span className="gradient-text">clientes dizem</span>
           </h2>
           <p className="text-white/60 max-w-2xl mx-auto">
             Histórias reais de quem já experimentou nossa experiência
           </p>
-        </motion.div>
+        </ScrollReveal>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {depoimentos.map((depoimento, index) => (
-            <Card key={depoimento.id} delay={index * 0.1}>
-              <div className="p-6">
-                <div className="flex items-center gap-4 mb-4">
-                  <div className="w-12 h-12 rounded-full bg-mostarda-500/20 flex items-center justify-center text-2xl">
-                    {depoimento.nome.charAt(0)}
-                  </div>
-                  <div>
-                    <h4 className="font-body font-semibold">{depoimento.nome}</h4>
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className={`w-4 h-4 ${
-                            i < depoimento.rating
-                              ? 'fill-mostarda-500 text-mostarda-500'
-                              : 'text-white/20'
-                          }`}
-                        />
-                      ))}
-                      <span className="text-white/40 text-xs ml-2">{depoimento.data}</span>
+            <ScrollReveal key={depoimento.id} direction="up" delay={index * 0.1}>
+              <Card>
+                <div className="p-6">
+                  <div className="flex items-center gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-mostarda-500/20 flex items-center justify-center text-2xl">
+                      {depoimento.nome.charAt(0)}
+                    </div>
+                    <div>
+                      <h4 className="font-body font-semibold">{depoimento.nome}</h4>
+                      <div className="flex items-center gap-1">
+                        {[...Array(5)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className={`w-4 h-4 ${
+                              i < depoimento.rating
+                                ? 'fill-mostarda-500 text-mostarda-500'
+                                : 'text-white/20'
+                            }`}
+                          />
+                        ))}
+                        <span className="text-white/40 text-xs ml-2">{depoimento.data}</span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <p className="text-white/70 text-sm leading-relaxed">
-                  "{depoimento.texto}"
-                </p>
-              </div>
-            </Card>
+                  <p className="text-white/70 text-sm leading-relaxed">
+                    "{depoimento.texto}"
+                  </p>
+                </div>
+              </Card>
+            </ScrollReveal>
           ))}
         </div>
       </div>
