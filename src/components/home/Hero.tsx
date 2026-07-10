@@ -9,7 +9,7 @@ import { Button } from '@/components/ui/Button'
 
 export default function Hero() {
   return (
-    <section className="relative w-full flex items-center overflow-hidden pt-40 pb-32 sm:pb-28 md:pb-32 lg:pb-36" style={{ minHeight: 'auto', maxHeight: '850px' }}>
+    <section className="relative w-full flex items-center overflow-hidden pt-48 pb-32 sm:pb-28 md:pb-32 lg:pb-36" style={{ minHeight: 'auto', maxHeight: '850px' }}>
       {/* Background com gradiente */}
       <div className="absolute inset-0 bg-gradient-to-br from-dark-500 via-dark-400 to-dark-300">
         <div className="absolute inset-0 bg-[url('/images/pattern-bg.svg')] opacity-5" />
